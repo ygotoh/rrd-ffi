@@ -11,7 +11,6 @@ $VERBOSE = false
 
 RSpec.configure do |config|
   config.before :each do
-    [RRD_FILE, IMG_FILE].each{|file| `rm #{file} 2>&1`}
+    [RRD_FILE, IMG_FILE].each { |file| `rm #{file} 2>&1` }
   end
-  
 end

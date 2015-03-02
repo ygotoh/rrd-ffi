@@ -4,3 +4,6 @@ pkg
 doc
 coverage
 .idea
+.gitignore
+.rubocop.yml
+

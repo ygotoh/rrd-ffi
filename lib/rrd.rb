@@ -6,7 +6,7 @@ require "rrd/base"
 require "rrd/graph"
 require "rrd/xport"
 require "rrd/builder"
-require "rrd/time_extension"
+require 'time_units'
 
 module RRD
   extend self
@@ -37,9 +37,9 @@ module RRD
 
     line_params = []
 
-    hash.each_pair do |key,value|
-      if value.kind_of? Array
-        value.each {|v| line_params += ["--#{key}".gsub(/_/, "-"), v.to_s]}
+    hash.each_pair do |key, value|
+      if value.is_a? Array
+        value.each { |v| line_params += ["--#{key}".gsub(/_/, "-"), v.to_s] }
       else
         line_params += ["--#{key}".gsub(/_/, "-"), value.to_s]
       end
@@ -54,7 +54,7 @@ module RRD
 
   def bang(method, *args, &block)
     result = send(method, *args, &block)
-    raise error unless result
+    fail error unless result
     result
   end
 
@@ -68,4 +68,3 @@ module RRD
     "
   end
 end
-

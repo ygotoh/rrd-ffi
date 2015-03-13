@@ -1,5 +1,6 @@
 *.rrd
 *.png
+vm.xmlnew
 pkg
 doc
 coverage

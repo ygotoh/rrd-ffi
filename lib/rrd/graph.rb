@@ -75,6 +75,14 @@ module RRD
       draw("AREA", options)
     end
 
+    def draw_hrule(value, options)
+      draw("HRULE:#{value.to_f}", options)
+    end
+
+    def draw_vrule(at, options)
+      draw("VRULE:#{at.to_i}", options)
+    end
+
     def line(rrd_file, options)
       dataset = options.reject { |name, _value| GRAPH_OPTIONS.include?(name.to_sym) }
       name = "#{dataset.keys.first}_#{dataset.values.first}"

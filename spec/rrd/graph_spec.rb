@@ -55,6 +55,17 @@ describe RRD::Graph do
     expect(result).to eq("AREA:cpu#00FF00:CPU 0")
   end
 
+  it "should store printable for hrule drawing" do
+    result = @graph.draw_hrule 80, :color => "#00FF00", :label => "High"
+    expect(result).to eq("HRULE:80.0:#00FF00:High")
+  end
+
+  it "should store printable for vrule drawing" do
+    at = Time.now - 1.5.day
+    result = @graph.draw_vrule at, :color => "#00FF00", :label => "Reboot"
+    expect(result).to eq("VRULE:#{at.to_i}:#00FF00:Reboot")
+  end
+
   it "should store printable for comment" do
     result = @graph.print_comment "Lero lero"
     expect(result).to eq("COMMENT:Lero lero")
